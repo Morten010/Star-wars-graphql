@@ -16,8 +16,9 @@ export default function Modal({open, setOpen, film}: {
     className='absolute bg-black/25 w-full h-screen top-0 left-0 flex items-center justify-center'
     >
         <div
-        className='bg-[#2791cc]/10 border-[#2791cc] border min-w-[200px] max-w-[800px] w-full p-3 min-h-[100px] rounded relative'
+        className='bg-[#2791cc]/10 border-[#2791cc] border min-w-[200px] max-w-[800px] w-full p-3 min-h-[100px] rounded relative overflow-hidden'
         >
+            <div className="screen-overlay"></div>
             {film && (
                 <>
                     <h2
@@ -53,7 +54,7 @@ export default function Modal({open, setOpen, film}: {
                 </>
             )}
             <button
-            className='bg-[#2791cc]/20 px-2 py-1 border-[#2791cc] border absolute right-3 top-3'
+            className='bg-[#2791cc]/20 px-2 py-1 border-[#2791cc] border absolute right-3 top-3 z-10 rounded'
             onClick={setOpen}
             >
                 Go back
