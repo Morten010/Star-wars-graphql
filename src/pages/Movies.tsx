@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import Spinner from '../components/Spinner';
-import { FilmProps } from '../types';
+import { FilmProps, SpeciesProps } from '../types';
 import Modal from '../components/Modal';
 import {useState} from "react"
 
@@ -25,8 +25,14 @@ const GET_MOVIES = gql`
     }
 `;
 
+export type Props = FilmProps & {
+    speciesConnection: {
+        species: SpeciesProps[]
+    }
+}
+
 export default function Movies() {
-    const [choosenFilm, setChoosenFilm] = useState<FilmProps | undefined>()
+    const [choosenFilm, setChoosenFilm] = useState<Props | undefined>()
     const { loading, error, data } = useQuery(GET_MOVIES)
 
     console.log(data);
@@ -67,8 +73,9 @@ export default function Movies() {
         <div
         className='personGrid'
         >
-            {data.allFilms.films.map((f: FilmProps) => (
+            {data.allFilms.films.map((f: Props ) => (
                 <div
+                key={f.title}
                 className='cursor-pointer'
                 onClick={() => setChoosenFilm(f)}
                 >

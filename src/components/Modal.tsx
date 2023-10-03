@@ -1,15 +1,12 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
 import { FilmProps, SpeciesProps } from '../types'
+import { Props } from '../pages/Movies'
 
 export default function Modal({open, setOpen, film}: {
     open: boolean,
     setOpen: () => void
-    film?: FilmProps & {
-        speciesConnection: {
-            species: SpeciesProps[]
-        }
-    }
+    film?: Props
 }) {
 
     console.log(film);

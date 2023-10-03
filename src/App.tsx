@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Homepage from './pages/Homepage'
 import Characters from './pages/Characters'
 import Movies from './pages/Movies'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <main
-        className='max-w-screen-xl mx-auto'
+        className='max-w-screen-xl mx-auto min-h-[calc(100vh-56px-48px)]'
         >
         <Routes>
           <Route index element={<Homepage />} />
@@ -24,6 +25,7 @@ function App() {
           <Route path='/movies' element={<Movies />} />
         </Routes>
         </main>
+        <Footer />
       </BrowserRouter>
     </>
   )
